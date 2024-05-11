@@ -6,13 +6,12 @@ const questions = ["What is the title of your project?", "What motivated you to 
 
 // TODO: Create a function to write README file
 const fs = require('fs')
-fs.writeFile('./package-lock.json', 'utf-8', (err, data) => {
+fs.writeFile('ReadME.md', 'Readme Generator', (err) => {
 if (err) {
-    console.log(err);
-} else {
-    console.log(data);
+    throw new error(err);
 }
-});
+console.log("File was written succesfully");
+})
 
 
 
