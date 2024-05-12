@@ -12,51 +12,36 @@ const questions = [
       type: 'input',
       name: 'title',
       message: 'What is your user name?',
-    }
+    },
     {  
         type: 'input',
         name: 'username',
         message: 'What is your Github username?',
-         },
-         {  
-            type: 'input',
-            name: 'email',
-            message: 'Please enter your email?',
-             }
-          
+    },
+    {  
+        type: 'input',
+        name: 'email',
+        message: 'Please enter your email?',
+    },
     {  
       type: 'input',
       name: 'description',
       message: 'What is the purpose and functionality of this project?',
-         },
-         {  
+    },
+    {  
         type: 'input',
         name: 'install',
         message: 'How do you install the project?',             
-       }
-             {  
-                type: 'checkbox',
-                name: 'license',
-                message: 'please select a license for this project?',
-                Choices: ["MIT", "Apache2.0", "Boost1.0", "MPL2.0", "BSD2", "BSD3", "none"],
-                 }
-             ];
-
+    },
+    {  
+        type: 'checkbox',
+        name: 'license',
+        message: 'please select a license for this project?',
+        choices: ["MIT", "Apache2.0", "Boost1.0", "MPL2.0", "BSD2", "BSD3", "none"],
+    }
+];
 
  
-const loadDatabase = () => {
-    return new Promise((resolve, reject) => {
-        fs.readFile('./package-lock.json', 'utf-8', (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        });
-    });
-};
- 
-
 fs.writeFile('ReadME.md', 'Welcome to our Readme Generator!', (err) => {
 if (err) {
     throw new error(err);
@@ -64,12 +49,11 @@ if (err) {
 console.log("File was written succesfully");
 })
 // TODO: Create a function to initialize app
-const start = async () => {
-   try { 
-    const ReadmeGenerator = await loadDatabase('./package-lock.json'); 
-   } catch (error) {
-
-   }
+function start() {
+    inquirer.prompt(questions).then(responses) => {
+        console.log("Creating Profesional Readme.md file...");
+        fs.writeFile("./Readme-Generator/Readme.md", generateMarkdown({...responses}));
+    }
 }
 
 // Function call to initialize app
