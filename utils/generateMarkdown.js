@@ -36,12 +36,6 @@ function generateMarkdown(data) {
   ${data.link}
   ## Screenshot
   ![alt-text](${data.screenshot})
-  ## Table of Contents
-  * [Coding Languages](#languages)
-  * [How to install](#install)
-  * [Features](#description)
-  * [Questions](#questions)
-  * [Contributors](#contributors)
   ## Features
   ${data.features}
   ## Coding Languages
@@ -62,4 +56,4 @@ function generateMarkdown(data) {
   `;
 }
  
-module.exports = generateMarkdown;
+module.exports =  generateMarkdown;
