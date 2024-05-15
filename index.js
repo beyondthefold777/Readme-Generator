@@ -3,16 +3,12 @@ const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 const path = require('path')
  
-// Function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile(path.join(process.cwd(), fileName), data); 
-};
 // Array of questions for user input
 const questions = [
     {  
-      type: 'input',
-      name: 'title',
-      message: 'What is the title of your project?',
+        type: 'input',
+        name: 'title',
+        message: 'What is the title of your project?',
     },
     {  
         type: 'input',
@@ -55,16 +51,27 @@ const questions = [
         type: "input",
         name: "languages",
         message:
-          "What are the coding languages associated with this project.",
+        "What are the coding languages associated with this project.",
     },
 ];
-// TODO: Create a function to initialize app
-function start() {
-    inquirer.prompt(questions)
-        .then((data) => {
-            writeToFile('README-Generator.md', data);
+	// Function to write README file
+    function writeToFile(fileName, data) {
+        fs.writeFile(path.join(process.cwd(), fileName), data, (err) => {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log('File created successfully!');
+            }
         });
-}
- 
-// Function call to initialize app
-start();
+    }
+     
+    // TODO: Create a function to initialize app
+    function start() {
+        inquirer.prompt(questions)
+            .then((data) => {
+                writeToFile('README-Generator.md', JSON.stringify(data, null, 4));
+            });
+    }
+     
+    // Function call to initialize app
+    start();

@@ -30,6 +30,10 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `# ${data.title}
   ${renderLicenseBadge(data.license)}
+  ## Title
+  ${data.title}
+  ## Github Repo
+  ${data.repo}
   ## Description
   ${data.description}
   ## Deployed Application URL
