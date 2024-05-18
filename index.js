@@ -16,6 +16,11 @@ const questions = [
         message: 'What is your Github Repo?',
     },
     {  
+        type: 'input',
+        name: 'email',
+        message: 'What is your email?',
+      },
+    {  
       type: 'input',
       name: 'description',
       message: 'What is the purpose and functionality of this project?',
@@ -38,7 +43,7 @@ const questions = [
     
     {  
         type: 'input',
-        name: 'install',
+        name: 'installation',
         message: 'How do you install the application?',             
     },
     {  
@@ -69,7 +74,7 @@ const questions = [
     function start() {
         inquirer.prompt(questions)
             .then((data) => {
-                writeToFile('README-Generator.md', JSON.stringify(data, null, 4));
+                writeToFile('README.md', JSON.stringify(data, null, 4));
             });
     }
      
