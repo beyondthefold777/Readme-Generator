@@ -16,6 +16,11 @@ const questions = [
         message: 'What is your Github Repo?',
     },
     {  
+        type: 'input',
+        name: 'email',
+        message: 'What is your email?',
+      },
+    {  
       type: 'input',
       name: 'description',
       message: 'What is the purpose and functionality of this project?',
@@ -38,7 +43,7 @@ const questions = [
     
     {  
         type: 'input',
-        name: 'install',
+        name: 'installation',
         message: 'How do you install the application?',             
     },
     {  
