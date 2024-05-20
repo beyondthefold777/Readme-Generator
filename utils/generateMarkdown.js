@@ -40,7 +40,7 @@ function generateMarkdown(data) {
   * [Questions](#questions)
   
   ## Description  
-  ${data.description}
+  ${*data.description}
 
   ## Installation
   ${data.installation}

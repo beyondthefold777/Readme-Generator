@@ -74,7 +74,7 @@ const questions = [
     function start() {
         inquirer.prompt(questions)
             .then((data) => {
-                writeToFile('README.md', JSON.stringify(data, null, 4));
+                writeToFile('README.md', generateMarkdown({...responses}))
             });
     }
      
