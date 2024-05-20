@@ -1,8 +1,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
-const path = require('path')
- 
+const path = require('path');
+
 // Array of questions for user input
 const questions = [
     {  
@@ -19,11 +19,11 @@ const questions = [
         type: 'input',
         name: 'email',
         message: 'What is your email?',
-      },
+    },
     {  
-      type: 'input',
-      name: 'description',
-      message: 'What is the purpose and functionality of this project?',
+        type: 'input',
+        name: 'description',
+        message: 'What is the purpose and functionality of this project?',
     },
     {
         type: "input",
@@ -40,7 +40,6 @@ const questions = [
         name: "contributors",
         message: "Provide Github Usernames for your project's contributors?"
     },
-    
     {  
         type: 'input',
         name: 'installation',
@@ -49,34 +48,34 @@ const questions = [
     {  
         type: 'checkbox',
         name: 'license',
-        message: 'please select a license for this project?',
+        message: 'Please select a license for this project?',
         choices: ["MIT", "Apache2.0", "Boost1.0", "MPL2.0", "BSD2", "BSD3", "none"],
     },
     {
         type: "input",
         name: "languages",
-        message:
-        "What are the coding languages associated with this project.",
+        message: "What are the coding languages associated with this project."
     },
 ];
-	// Function to write README file
-    function writeToFile(fileName, data) {
-        fs.writeFile(path.join(process.cwd(), fileName), data, (err) => {
-            if (err) {
-                console.error(err);
-            } else {
-                console.log('File created successfully!');
-            }
+
+// Function to write README file
+function writeToFile(fileName, data) {
+    fs.writeFile(path.join(process.cwd(), fileName), data, (err) => {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log('File created successfully!');
+        }
+    });
+}
+
+// Function to initialize app
+function start() {
+    inquirer.prompt(questions)
+        .then((data) => {
+            writeToFile('README.md', generateMarkdown({ ...responses }))
         });
-    }
-     
-    // TODO: Create a function to initialize app
-    function start() {
-        inquirer.prompt(questions)
-            .then((data) => {
-                writeToFile('README.md', generateMarkdown({...responses}))
-            });
-    }
-     
-    // Function call to initialize app
-    start();
+}
+
+// Initialize the app
+start();
